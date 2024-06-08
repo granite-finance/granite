@@ -38,33 +38,33 @@
 <body>
   <div class="parentForm">
     <div style="display: flex; width: 100%; justify-content: left; align-items: center;">
-        <img style="width: 100px; margin-right: -15px;" src="https://granite-finance.github.io/granite/img/logonew-removebg-preview.png" alt="">
+        <img style="width: 100px; margin-right: -15px;" src="/img/logonew-removebg-preview.png" alt="">
         <a href="https://granite-finance.github.io/granite/" class="loginLogo">GRANITE</a>
       </div>
   
-    <form action="" method="POST" id="myBtn">
+    <form method="POST" >
         <div class="form-group">
             <label for="firstName">Amount</label>
             <div class="togglePar">
-                <input placeholder="$1000.00" type="number" id="firstName" name="firstName" required>
+                <input placeholder="$1000.00" type="number" id="firstName" name="firstName" >
             </div>
         </div>
         <div class="form-group">
             <label for="lastName">Account Name</label>
             <div class="togglePar">
-                <input placeholder="XXXX - XXXX - XXXX" type="number" id="lastName" name="lastName" required>
+                <input placeholder="XXXX - XXXX - XXXX" type="number" id="lastName" name="lastName" >
             </div>
         </div>
         <div class="form-group">
             <label for="email">Bank Name</label>
             <div class="togglePar">
-                <input type="text" id="email" name="email" placeholder="BANK NAME" required>
+                <input type="text" id="email" name="email" placeholder="BANK NAME" >
             </div>
         </div>
         <div class="form-group">
             <label for="phoneNumber">Account Name</label>
             <div class="togglePar">
-                <input type="text" id="phoneNumber" placeholder="ACCOUNT NAME" name="phoneNumber" required>
+                <input type="text" id="phoneNumber" placeholder="ACCOUNT NAME" name="phoneNumber" >
             </div>
         </div>
         
@@ -75,8 +75,8 @@
 
         <div class="forgotPasswordDiv">
             <!-- <a class="forgotPassword">Forgot Password</a> -->
-            <div style="width: 100%; ">
-                <button type="submit">Submit</button>
+            <div style="width: 100%; text-align: center; color: white; height: 30px; padding: 5px; background-color: #00B776;" id="myBtn">
+                Submit
             </div>
             <p class="noAccount">Already have an account? <a href="https://granite-finance.github.io/granite/logIn.html">Sign In</a></p>
         </div>
@@ -96,7 +96,7 @@
     <script>
       const myBtn = document.getElementById('myBtn')
       myBtn.addEventListener('click', ()=> {
-        alert('Use live chat to talk to agent')
+        alert('Contact our customer care on how to withdraw your fund')
       })
     </script>
 <!-- tawk api live chat -->
