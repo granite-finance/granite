@@ -23,7 +23,7 @@ signupForm.addEventListener('submit', e => {
             firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(userCredential => {
                 const user = userCredential.user;
-                user.sendEmailVerification();
+                // user.sendEmailVerification();
                 
 
                 // Store additional user data in the Realtime Database
