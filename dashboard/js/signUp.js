@@ -45,7 +45,7 @@ signupForm.addEventListener('submit', e => {
 
                     // alert(`Registration completed, check your email to verify your email`)
                     setTimeout(function(){
-                        window.location.replace("https://granite-finance.github.io/granite/login.html");
+                        window.location.replace("https://granite-finance.github.io/granite/dashboard/dashboard.html");
                     }, 1000)
                 }).catch(error => {
                     console.error("Error adding user data to the database: ", error);
