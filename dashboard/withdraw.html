@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
+    
 
     <script>
       (function(d, w, c) {
@@ -33,9 +34,46 @@
       })(document, window, 'Chatra');
   </script>
   <!-- /Chatra {/literal} -->
-    
+
+  <style>
+    .showNotification {
+        font-size: 20px; text-align: center; display: block; position: absolute; top: 0; opacity: 5; background-color: red; color: white; width: 100vw; padding: 5% 0; left: 0;
+    }
+    .offNotification {
+        display: none;
+    }
+    .parentImgFade {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        background-color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 2;
+    }
+    .offParentImgFade {
+        display: none;
+    }
+    @keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+    .imageDisplay {
+        animation: rotate 2s infinite;
+    }
+</style>
+  
 </head>
 <body>
+    
   <div class="parentForm">
     <div style="display: flex; width: 100%; justify-content: left; align-items: center;">
         <img style="width: 100px; margin-right: -15px;" src="https://granite-finance.github.io/granite/img/logonew-removebg-preview.png" alt="">
@@ -44,27 +82,27 @@
   
     <form method="POST" >
         <div class="form-group">
-            <label for="firstName">Amount</label>
+            <label for="amount">Amount</label>
             <div class="togglePar">
-                <input placeholder="$1000.00" type="number" id="firstName" name="firstName" >
+                <input placeholder="$1000.00" type="number" id="amount" name="amount" >
             </div>
         </div>
         <div class="form-group">
-            <label for="lastName">Account Number</label>
+            <label for="accountNumber">Account Number</label>
             <div class="togglePar">
-                <input placeholder="XXXX - XXXX - XXXX" type="number" id="lastName" name="lastName" >
+                <input placeholder="XXXX - XXXX - XXXX" type="number" id="accountNumber" name="accountNumber" >
             </div>
         </div>
         <div class="form-group">
-            <label for="email">Bank Name</label>
+            <label for="bankName">Bank Name</label>
             <div class="togglePar">
-                <input type="text" id="email" name="email" placeholder="BANK NAME" >
+                <input type="text" id="bankName" name="bankName" placeholder="BANK NAME" >
             </div>
         </div>
         <div class="form-group">
-            <label for="phoneNumber">Account Name</label>
+            <label for="accountName">Account Name</label>
             <div class="togglePar">
-                <input type="text" id="phoneNumber" placeholder="ACCOUNT NAME" name="phoneNumber" >
+                <input type="text" id="accountName" placeholder="ACCOUNT NAME" name="accountName" >
             </div>
         </div>
         
@@ -78,7 +116,7 @@
             <div style="width: 100%; text-align: center; color: white; height: 30px; padding: 5px; background-color: #00B776;" id="myBtn">
                 Submit
             </div>
-<!--             <p class="noAccount">Already have an account? <a href="https://granite-finance.github.io/granite/logIn.html">Sign In</a></p> -->
+            <p class="noAccount">Already have an account? <a href="https://granite-finance.github.io/granite/logIn.html">Sign In</a></p>
         </div>
   
 
@@ -90,30 +128,53 @@
             You currently have no sufficient fund to withdraw. You can talk to one of our agent using live chat
         </p> -->
     </div>
+
+    <div id="inputNotification" class="offNotification">
+        Fill all the input fields
+    </div>
+
+    <div id="parentImgFade" class="offParentImgFade">
+        <img class="imageDisplay" style="width: 100px; margin-right: -15px;" src="/img/logonew-removebg-preview.png" alt="">
+    </div>
     
 
 
     <script>
       const myBtn = document.getElementById('myBtn')
+      const parentImgFade = document.getElementById('parentImgFade')
+      const inputNotification = document.getElementById('inputNotification')
+
       myBtn.addEventListener('click', ()=> {
-        alert('Contact our customer care on how to withdraw your money')
+        const amount = document.getElementById('amount').value
+        const accountNumber = document.getElementById('accountNumber').value
+        const bankName = document.getElementById('bankName').value
+        const accountName = document.getElementById('accountName').value
+        // alert('Contact our customer care on how to withdraw your fund')
+        if (amount != '' && accountNumber != '' && bankName != '' && accountName != '' ) {
+            // showing rolling when click the button
+            parentImgFade.classList.remove('offParentImgFade')
+            parentImgFade.classList.add('parentImgFade')
+            setTimeout(() => {
+                parentImgFade.classList.add('offParentImgFade')
+                parentImgFade.classList.remove('parentImgFade')
+                alert(`Your request to withdraw $${amount} has been initiated. You will receive an email shortly, the money will be available in your desired account in the next 24hours`)
+            }, 3000);
+           
+        } else {
+            inputNotification.classList.remove('offNotification')
+            inputNotification.classList.add('showNotification')
+            setTimeout(() => {
+                inputNotification.classList.add('offNotification')
+                inputNotification.classList.remove('showNotification')
+                }, 3000);
+        }
+        
       })
     </script>
 <!-- tawk api live chat -->
   <!--Start of Tawk.to Script-->
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/665ad352981b6c5647771fc0/1hv9civbu';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-  </script>
-  <!--End of Tawk.to Script-->
-<script src="https://granite-finance.github.io/granite/index.js"></script>
+  
+<!-- <script src="https://granite-finance.github.io/granite/index.js"></script> -->
     
 
     
